@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security-4.0.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.1.xsd
+						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <mvc:default-servlet-handler/>
+
+    <!-- Enable @PreAuthorize -->
+
+    <!--指定Spring IOC 容器扫描的包 -->
+    <context:component-scan base-package="cn.lcz.web.controller"/>
+
+    <aop:aspectj-autoproxy/>
+
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:argument-resolvers>
+            <bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver"/>
+        </mvc:argument-resolvers>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html; charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+                        <property name="objectMapper">
+                            <bean class="cn.lcz.web.config.MyJacksonObjectMapper"/>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <!-- jsp视图解析器 -->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+        <!-- property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="order" value="2"/>
+    </bean>
+
+    <!-- servlet适配器，这里必须明确声明，因为spring默认没有初始化该适配器 -->
+    <bean id="servletHandlerAdapter" class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter"/>
+
+
+    <!-- 根据URL协商ContentType：http://blog.csdn.net/ktlifeng/article/details/50607689 -->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true"/>
+        <property name="favorParameter" value="true"/>
+        <property name="defaultContentType" value="text/html"/>
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+                xml=application/xml
+            </value>
+        </property>
+    </bean>
+</beans>

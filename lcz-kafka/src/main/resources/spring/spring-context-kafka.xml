@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:lcz="http://schema.lcz.cn/lcz/schema/lcz"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                        http://schema.lcz.cn/lcz/schema/lcz http://schema.lcz.cn/lcz/schema/lcz.xsd">
+    <!-- Kafka相关配置 -->
+    <lcz:kafka id="kafkaConfig" suffix="DEV"/>
+    <lcz:kafka-consumer id="kafkaConsumerConfig" bootstrap-servers="127.0.0.1:9092" />
+    <lcz:kafka-producer id="kafkaProducerConfig" bootstrap-servers="127.0.0.1:9092" />
+</beans>

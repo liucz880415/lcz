@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://schema.lcz.cn/lcz/schema/lcz"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://schema.lcz.cn/lcz/schema/lcz"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+
+    <!-- Redis Configuration Start -->
+    <xsd:complexType name="redisType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="address" type="xsd:string" use="required"/>
+                <xsd:attribute name="port" type="xsd:string" use="optional" default="6379"/>
+                <xsd:attribute name="auth" type="xsd:string" use="required"/>
+                <xsd:attribute name="database" type="xsd:string" use="required"/>
+
+                <xsd:attribute name="max-total" type="xsd:string" use="optional" default="256"/>
+                <xsd:attribute name="max-idle" type="xsd:string" use="optional" default="32"/>
+                <xsd:attribute name="min-idle" type="xsd:string" use="optional" default="16"/>
+                <xsd:attribute name="max-wait-millis" type="xsd:string" use="optional" default="10000"/>
+                <xsd:attribute name="test-on-borrow" type="xsd:string" use="optional" default="true"/>
+                <xsd:attribute name="test-on-return" type="xsd:string" use="optional" default="true"/>
+                <xsd:attribute name="test-while-idle" type="xsd:string" use="optional" default="true"/>
+                <xsd:attribute name="time-between-eviction-runs-millis" type="xsd:string" use="optional" default="30000"/>
+                <xsd:attribute name="num-tests-per-eviction-run" type="xsd:string" use="optional" default="10"/>
+                <xsd:attribute name="min-evictable-idle-time-millis" type="xsd:string" use="optional" default="60000"/>
+                <xsd:attribute name="timeout" type="xsd:string" use="optional" default="10000"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!-- Redis Configuration End -->
+
+    <!-- KafkaConfig Configuration Start -->
+    <xsd:complexType name="kafkaType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="suffix" type="xsd:string" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="consumerType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="bootstrap-servers" type="xsd:string" use="required"/>
+                <xsd:attribute name="session-timeout" type="xsd:string" default="30000"/>
+                <xsd:attribute name="key-deserializer" type="xsd:string" default="org.apache.kafka.common.serialization.StringDeserializer"/>
+                <xsd:attribute name="value-deserializer" type="xsd:string" default="cn.lcz.kafka.base.serialization.KafkaMessageDeserializer"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="producerType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="bootstrap-servers" type="xsd:string" use="required"/>
+                <xsd:attribute name="session-timeout" type="xsd:string" default="30000"/>
+                <xsd:attribute name="key-serializer" type="xsd:string" default="org.apache.kafka.common.serialization.StringSerializer"/>
+                <xsd:attribute name="value-serializer" type="xsd:string" default="cn.lcz.kafka.base.serialization.KafkaMessageSerializer"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!-- KafkaConfig Configuration End -->
+
+    <!-- Email Configuration Start -->
+    <xsd:complexType name="smtpType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="need-auth" type="xsd:string" default="true"/>
+                <xsd:attribute name="use-ssl" type="xsd:string" use="required"/>
+                <xsd:attribute name="start-tls" type="xsd:string" use="required"/>
+                <xsd:attribute name="host" type="xsd:string" use="required"/>
+                <xsd:attribute name="port" type="xsd:string" use="required"/>
+                <xsd:attribute name="connection-timeout" type="xsd:string" default="30000"/>
+                <xsd:attribute name="timeout" type="xsd:string" default="30000"/>
+                <xsd:attribute name="username" type="xsd:string" use="required"/>
+                <xsd:attribute name="password" type="xsd:string" use="required"/>
+                <xsd:attribute name="mail-from" type="xsd:string" use="required"/>
+                <xsd:attribute name="mail-from-name" type="xsd:string" default="i人事" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!-- Email Configuration End -->
+
+    <!-- Voice Message Configuration Start -->
+    <xsd:complexType name="voiceMessageType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:attribute name="username" type="xsd:string" use="required"/>
+                <xsd:attribute name="password" type="xsd:string" use="required"/>
+                <xsd:attribute name="reply-number" type="xsd:string" use="required"/>
+                <xsd:attribute name="base-url" type="xsd:string" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!-- Voice Message Configuration End -->
+
+    <!-- Kafka Configuration -->
+    <xsd:element name="kafka" type="kafkaType"/>
+    <xsd:element name="kafka-consumer" type="consumerType"/>
+    <xsd:element name="kafka-producer" type="producerType"/>
+
+    <!-- Redis Configuration -->
+    <xsd:element name="redis" type="redisType"/>
+
+    <!-- Email Configuration -->
+    <xsd:element name="smtp" type="smtpType"/>
+
+    <!-- Voice Message Configuration -->
+    <xsd:element name="voice-message" type="voiceMessageType"/>
+</xsd:schema>

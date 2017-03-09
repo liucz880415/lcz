@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lcz</artifactId>
+        <groupId>cn.lcz</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lcz-dubbo-provider</artifactId>
+    <name>lcz-dubbo-provider</name>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.lcz</groupId>
+            <artifactId>lcz-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.lcz</groupId>
+            <artifactId>lcz-dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.kaptcha</groupId>
+            <artifactId>kaptcha</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
