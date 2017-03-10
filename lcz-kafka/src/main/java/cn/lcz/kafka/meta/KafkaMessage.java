@@ -1,7 +1,7 @@
 package cn.lcz.kafka.meta;
 
+import cn.lcz.core.utils.UUIDTools;
 import cn.lcz.kafka.core.KafkaTag;
-import cn.lcz.kafka.util.UUIDTools;
 
 import java.util.Date;
 import java.util.Set;

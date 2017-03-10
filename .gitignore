@@ -1,0 +1,17 @@
+target/
+.settings/
+.myeclipse/
+.project
+.classpath
+.tern-project
+logback-test.xml
+bin/
+logs/
+.idea/
+*.iml
+git.properties
+.metadata/
+node_modules/
+npm-debug.log
+*.tidy.css
+*.combined.css

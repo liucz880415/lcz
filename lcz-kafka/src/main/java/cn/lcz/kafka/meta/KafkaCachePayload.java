@@ -1,7 +1,8 @@
 package cn.lcz.kafka.meta;
 
-import cn.lcz.kafka.annotation.Key;
-import cn.lcz.kafka.annotation.RedisExpire;
+
+import cn.lcz.core.annotation.Key;
+import cn.lcz.core.annotation.RedisExpire;
 
 import java.io.Serializable;
 
