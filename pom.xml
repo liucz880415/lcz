@@ -19,6 +19,7 @@
         <module>lcz-core</module>
         <module>lcz-biz</module>
         <module>lcz-meta</module>
+        <module>lcz-daemon</module>
     </modules>
 
 

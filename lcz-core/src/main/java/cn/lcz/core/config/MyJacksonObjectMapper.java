@@ -1,4 +1,4 @@
-package cn.lcz.web.config;
+package cn.lcz.core.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;

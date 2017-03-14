@@ -1,7 +1,7 @@
 package cn.lcz.kafka.core;
 
 public enum NotifyTopic implements Topic {
-    EMAIL("用于发送邮件的消息队列");
+    TEST_DEMO("测试kafka消息");
 
     private static final String CONSUMER_PREFIX = "CID_NOTIFY";
     private static final String TOPIC_PREFIX = "TID_NOTIFY";

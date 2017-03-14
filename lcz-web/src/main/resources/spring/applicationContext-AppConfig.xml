@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:lcz="http://schema.lcz.cn/lcz/schema/lcz"
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
@@ -10,7 +11,9 @@
 						http://www.springframework.org/schema/aop 
 						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 						http://www.springframework.org/schema/task
-						http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+						http://www.springframework.org/schema/task/spring-task-3.2.xsd
+						http://schema.lcz.cn/lcz/schema/lcz
+						http://schema.lcz.cn/lcz/schema/lcz.xsd">
 
     <context:annotation-config/>
 
@@ -24,6 +27,9 @@
     <task:annotation-driven/>
 
     <context:component-scan base-package="cn.lcz.web"/>
+
+
+    <lcz:redis id="redisConfig" address="192.168.1.7" auth="redis" database="2"/>
 
     <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
         <property name="config">

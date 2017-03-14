@@ -42,7 +42,7 @@
                 <property name="objectMapper">
                     <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
                         <property name="objectMapper">
-                            <bean class="cn.lcz.web.config.MyJacksonObjectMapper"/>
+                            <bean class="cn.lcz.core.config.MyJacksonObjectMapper"/>
                         </property>
                     </bean>
                 </property>

@@ -18,26 +18,8 @@
 
     <aop:aspectj-autoproxy/>
 
-
     <lcz:redis id="redisConfig" address="192.168.1.7" auth="redis" database="2"/>
 
-    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
-        <property name="config">
-            <bean class="com.google.code.kaptcha.util.Config">
-                <constructor-arg>
-                    <props>
-                        <prop key="kaptcha.border">no</prop>
-                        <prop key="kaptcha.border.color">105,179,90</prop>
-                        <prop key="kaptcha.textproducer.font.color">red</prop>
-                        <prop key="kaptcha.image.width">100</prop>
-                        <prop key="kaptcha.textproducer.font.size">30</prop>
-                        <prop key="kaptcha.image.height">40</prop>
-                        <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
-                        <prop key="kaptcha.textproducer.char.length">4</prop>
-                        <prop key="kaptcha.textproducer.font.names">宋体,楷体,微软雅黑</prop>
-                    </props>
-                </constructor-arg>
-            </bean>
-        </property>
-    </bean>
+    <context:component-scan base-package="cn.lcz.daemon.quartz cn.lcz.daemon.kafka"/>
+
 </beans>
