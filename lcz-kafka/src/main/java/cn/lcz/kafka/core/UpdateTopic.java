@@ -1,7 +1,7 @@
 package cn.lcz.kafka.core;
 
 public enum UpdateTopic implements Topic {
-    SMS_ORDER("短信订单");
+    TEST_UPDATE_KAFKA("测试update消息");
 
     private static final String PREFIX = "TID_UPDATE";
     private static final String SEPARATOR = "_";

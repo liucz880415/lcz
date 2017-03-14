@@ -2,6 +2,8 @@ package cn.lcz.dubbo;
 
 import cn.lcz.biz.kafka.service.ExceptionRecordService;
 import cn.lcz.biz.kafka.service.TestKafkaService;
+import cn.lcz.biz.kafka.service.TestKafkaUpdateService;
+import cn.lcz.kafka.core.KafkaTag;
 import cn.lcz.meta.kafka.TestKafkaEntity;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
@@ -18,6 +20,8 @@ public class LczDubboServiceImpl implements LczDubboService {
     private TestKafkaService testKafkaService;
     @Autowired
     private ExceptionRecordService exceptionRecordService;
+    @Autowired
+    private TestKafkaUpdateService testKafkaUpdateService;
 
     @Override
     public String testDubboDemo() {
@@ -37,5 +41,14 @@ public class LczDubboServiceImpl implements LczDubboService {
     @Override
     public void notifyMessage(TestKafkaEntity entity) {
         System.out.println("notify message start" + JSON.toJSONString(entity));
+    }
+
+
+    @Override
+    public String testKafkaDemo(String tag) {
+
+        System.out.println(tag + " message kafka start");
+        testKafkaUpdateService.sendUpdateMessage(KafkaTag.valueOf(tag));
+        return null;
     }
 }

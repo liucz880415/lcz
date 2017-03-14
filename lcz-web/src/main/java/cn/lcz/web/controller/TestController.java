@@ -28,4 +28,11 @@ public class TestController {
 
     }
 
+    @RequestMapping("/update-kafka")
+    public void testUpdateKafka() {
+        lczDubboService.testKafkaDemo("NEW");
+        lczDubboService.testKafkaDemo("UPDATE");
+        lczDubboService.testKafkaDemo("DELETE");
+    }
+
 }

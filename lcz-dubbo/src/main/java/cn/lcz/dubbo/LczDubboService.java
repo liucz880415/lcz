@@ -10,4 +10,6 @@ public interface LczDubboService {
     String testDubboDemo();
 
     void notifyMessage(TestKafkaEntity entity);
+
+    String testKafkaDemo(String tag);
 }
