@@ -1,10 +1,10 @@
 package cn.lcz.core.utils;
 
 import cn.lcz.config.redis.beans.RedisConfig;
-import cn.lcz.core.annotation.RedisCounter;
-import cn.lcz.core.annotation.RedisExpire;
-import cn.lcz.core.annotation.RedisList;
-import cn.lcz.core.annotation.RedisSet;
+import cn.lcz.meta.annotation.RedisCounter;
+import cn.lcz.meta.annotation.RedisExpire;
+import cn.lcz.meta.annotation.RedisList;
+import cn.lcz.meta.annotation.RedisSet;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;

@@ -1,7 +1,8 @@
 package cn.lcz.kafka.meta;
 
 
-import cn.lcz.core.annotation.Key;
+
+import cn.lcz.meta.annotation.Key;
 
 import java.io.Serializable;
 

@@ -1,5 +1,7 @@
 package cn.lcz.meta.kafka;
 
+import cn.lcz.meta.annotation.Key;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  */
 public class TestKafkaEntity implements Serializable {
 
+    @Key
     private String name;
     private String message;
 

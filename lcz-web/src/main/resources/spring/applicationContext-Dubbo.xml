@@ -11,7 +11,8 @@
     <dubbo:consumer check="false" timeout="86400000"/>
 
     <!-- 使用multicast广播注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" client="zkclient" file="/tmp/lcz/web/dubbo.cache"/>
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.zookeeper.address:127.0.0.1:2181}"
+                    client="zkclient" file="${dubbo.registry.cache.location:/tmp/lcz/web/dubbo.cache}"/>
 
     <import resource="classpath*:dubbo/dubbo-reference.xml"/>
 </beans>

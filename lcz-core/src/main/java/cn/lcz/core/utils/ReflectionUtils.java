@@ -1,6 +1,6 @@
 package cn.lcz.core.utils;
 
-import cn.lcz.core.annotation.Key;
+import cn.lcz.meta.annotation.Key;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

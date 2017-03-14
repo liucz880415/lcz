@@ -18,7 +18,16 @@
 
     <aop:aspectj-autoproxy/>
 
-    <lcz:redis id="redisConfig" address="192.168.1.7" auth="redis" database="2"/>
+    <bean class="cn.lcz.core.config.LczPropertyPlaceholderConfigurer">
+        <property name="searchSystemEnvironment" value="true"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="order" value="1"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="baseDir" value="etc/lcz/daemon/"/>
+        <property name="suffix" value=".properties"/>
+    </bean>
+
+    <lcz:redis id="redisConfig" address="${redis.address:192.168.1.7}" port="${redis.port:6379}" auth="${redis.auth:redis}" database="${redis.database:2}"/>
 
     <context:component-scan base-package="cn.lcz.daemon.quartz cn.lcz.daemon.kafka"/>
 

@@ -9,11 +9,11 @@
     <dubbo:application name="lcz-dubbo-provider" owner="liuchuanzhu"/>
 
     <!-- 使用zookeeper广播注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.zookeeper.address:127.0.0.1:2181}"
                     client="zkclient"/>
 
     <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20880" payload="1073741824"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.service.port:20880}" payload="1073741824"/>
 
     <!-- 扫描注解包路径，多个包用逗号分隔，不填package表示扫描当前ApplicationContext中所有的类 -->
     <dubbo:annotation package="cn.lcz.dubbo"/>

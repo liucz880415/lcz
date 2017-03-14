@@ -24,6 +24,19 @@
         </dependency>
 
         <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
@@ -126,23 +139,6 @@
         <dependency>
             <groupId>org.apache.axis</groupId>
             <artifactId>axis</artifactId>
-        </dependency>
-
-        <!-- 用于腾讯IM接口签名 -->
-        <dependency>
-            <groupId>com.tls</groupId>
-            <artifactId>tls_sig_api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix</artifactId>
-            <version>1.52</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov</artifactId>
-            <version>1.52</version>
         </dependency>
 
         <dependency>

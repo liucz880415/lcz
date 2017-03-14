@@ -7,5 +7,5 @@
 
     <dubbo:reference id="lczDubboService" interface="cn.lcz.dubbo.LczDubboService" version="1.0"/>
 
-
+    <dubbo:annotation package="cn.lcz.dubbo"/>
 </beans>
