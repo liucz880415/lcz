@@ -35,7 +35,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.lcz.biz.*.dao.mysql"/>
+        <property name="basePackage" value="cn.lcz.biz.*.dao.mysql"/>
     </bean>
 
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

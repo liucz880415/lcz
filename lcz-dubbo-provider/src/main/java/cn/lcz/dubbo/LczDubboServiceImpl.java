@@ -3,6 +3,7 @@ package cn.lcz.dubbo;
 import cn.lcz.biz.kafka.service.ExceptionRecordService;
 import cn.lcz.biz.kafka.service.TestKafkaService;
 import cn.lcz.biz.kafka.service.TestKafkaUpdateService;
+import cn.lcz.biz.user.service.LczUserService;
 import cn.lcz.kafka.core.KafkaTag;
 import cn.lcz.meta.kafka.TestKafkaEntity;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -22,6 +23,8 @@ public class LczDubboServiceImpl implements LczDubboService {
     private ExceptionRecordService exceptionRecordService;
     @Autowired
     private TestKafkaUpdateService testKafkaUpdateService;
+    @Autowired
+    private LczUserService lczUserService;
 
     @Override
     public String testDubboDemo() {
@@ -34,13 +37,16 @@ public class LczDubboServiceImpl implements LczDubboService {
         String messageId = testKafkaService.testKafka("test kafka", "kafka message content");
         System.out.println("messageId = " + messageId);
 
+        //新增mysql数据库
+//        lczUserService.insertUser("test", 23, "还剩多少都是第三方师傅的说法");
+
         return "success";
     }
 
 
     @Override
     public void notifyMessage(TestKafkaEntity entity) {
-        System.out.println("notify message start" + JSON.toJSONString(entity));
+        System.out.println("notify message start : " + JSON.toJSONString(entity));
     }
 
 
