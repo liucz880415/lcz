@@ -7,11 +7,9 @@
 						http://www.springframework.org/schema/security
 						http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-    <http pattern="/js/**" security="none"/>
-    <http pattern="/img/**" security="none"/>
-    <http pattern="/images/**" security="none"/>
-    <http pattern="/css/**" security="none"/>
-    <http pattern="/index.html" security="none"/>
+    <http pattern="/" security="none"/>
+    <http pattern="/index.do" security="none"/>
+    <http pattern="/app/**" security="none"/>
 
     <http use-expressions="true" disable-url-rewriting="true"
           entry-point-ref="authenticationProcessingFilterEntryPoint">
