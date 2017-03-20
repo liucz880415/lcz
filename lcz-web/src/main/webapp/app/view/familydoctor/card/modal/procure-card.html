@@ -1,0 +1,59 @@
+<div class="modal">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    <span class="glyphicons glyphicons-group"></span>
+                    批量采购
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-box left col-6">
+                    <label class="col-3 form-label">产品：</label>
+
+                    <div class="col-9">
+                        <select ng-model="procure.productId" class="form-control">
+                            <option ng-repeat="item in productList" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-box left col-6">
+                    <label class="col-3 form-label">企业名：</label>
+
+                    <div class="col-9">
+                        <select ng-model="procure.channelId" class="form-control">
+                            <option ng-repeat="item in channelList" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-box left col-6">
+                    <label class="col-3 form-label">采购类型：</label>
+
+                    <div class="col-9">
+                        <select ng-model="procure.cardType" class="form-control col-6">
+                            <option ng-repeat="item in skuList" value="{{item.cardType}}">{{item.skuName}}</option>
+                        </select>
+                        <span class="form-label" style="margin-left: 10px;font-size: 14px;color: red;">(限购：{{limitCount}}张)</span>
+                    </div>
+                </div>
+
+                <div class="form-box left col-6">
+                    <label class="col-3 form-label">采购数量：</label>
+
+                    <div class="col-9">
+                        <input type="text" class="form-control" ng-model="procure.count" ng-keyup="replaceCountNaN()"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="close()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="procureCards($event)">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

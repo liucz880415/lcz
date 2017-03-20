@@ -1,0 +1,65 @@
+<div ng-controller="TableController">
+    <button class="btn btn-default" ng-click="query()">查询</button>
+    <table-box jy-loading="loading" jy-content="content">
+        <div style="width: calc(100% - 100px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="200">
+                            <strong>2</strong>
+                        </th>
+                        <th width="200">
+                            <strong>3</strong>
+                        </th>
+                        <th width="200">
+                            <strong>4</strong>
+                        </th>
+                        <th width="200">
+                            <strong>5</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in content track by $index">
+                        <td>
+                            <td-limit-span jy-text="item.test2"></td-limit-span>
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.test3"></td-limit-span>
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.test4"></td-limit-span>
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.test5"></td-limit-span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 100px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="100">
+                            <strong>列1</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in content track by $index">
+                        <td>
+                            {{item.test1}}
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;"></tr>
+                </table>
+            </div>
+        </div>
+    </table-box>
+</div>

@@ -1,0 +1,67 @@
+<div ng-controller="CardSummaryController">
+
+    <table-box jy-page-data="pageData" jy-query-params="queryParams" jyf-query="querySale()" jya-hide-page="true">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">起始日期：</label>
+                    <ymd-picker jy-id="queryParams.startTime" jya-placeholder="请输入起始日期"></ymd-picker>
+                </div>
+                <div class="form-box">
+                    <label class="form-label">终止日期：</label>
+                    <ymd-picker jy-id="queryParams.endTime" jya-placeholder="请输入终止日期"></ymd-picker>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th>
+                            <strong>类型</strong>
+                        </th>
+                        <th>
+                            <strong>数量</strong>
+                        </th>
+                        <th>
+                            <strong>金额</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1 }}
+                        </td>
+                        <td>
+                            {{item.saleType }}
+                        </td>
+                        <td>
+                            {{item.saleCount }}
+                        </td>
+                        <td>
+                            {{item.saleMoney | NumberFilter}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {{summary.saleType }}
+                        </td>
+                        <td>
+                            {{summary.saleCount }}
+                        </td>
+                        <td>
+                            {{summary.saleMoney | NumberFilter}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </table-box>
+</div>

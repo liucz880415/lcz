@@ -1,0 +1,25 @@
+<div class="inline-block position-relative key-search-select" ng-style="{width:jyaWidth}">
+    <input type="text" class='form-control' style="z-index: 0;" ng-class="{'input-focus':focusIn}"
+           ng-disabled="jyDisabled" ng-focus="inputFocus()" ng-keyup="inputKeyup($event)"
+           ng-keydown="inputKeydown($event)" placeholder="{{jyaPlaceholder}}" ng-style="{width:jyaWidth}">
+    <span class="icon-search input-icon"
+          ng-click="iconClick()" ng-style="{cursor:jyDisabled ? 'no-drop':'pinter'}"></span>
+
+    <div class="fixed-box selector-box" ng-show="focusIn && showSelectorBox"
+         style="overflow-x: hidden;overflow-y: overlay;padding: 0;">
+        <ul class="hide-animation2" ng-show="!searchTimer && (content && content.length >= 0)">
+            <li ng-repeat="item in content track by $index"
+                ng-click="select(item)" ng-class="{'selector-box-selected':selectedIndex === $index}">
+                <span ng-bind-html="getLi(item)"></span>
+            </li>
+            <li style="display: none;"></li>
+        </ul>
+        <div class="data-loading hide-animation2" ng-show="searchTimer">
+            <span class='icon-spinner icon-spin'></span>
+        </div>
+        <div class="data-message hide-animation2"
+             ng-show="!searchTimer && (content && content.length === 0)">
+            未查找到数据
+        </div>
+    </div>
+</div>

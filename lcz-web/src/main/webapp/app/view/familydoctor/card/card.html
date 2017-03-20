@@ -1,0 +1,97 @@
+<div ng-controller="CardController">
+    <table-box jy-offset-height="-5" jy-page-data="pageData" jy-query-params="queryParams" jyf-query="queryCards()">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">卡号：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.cardNo">
+                </div>
+                <div class="form-box">
+                    <label class="form-label">类型：</label>
+                    <select class="form-control w200" ng-model="queryParams.type"
+                            ng-change="queryCards()">
+                        <option value="">请选择</option>
+                        <option ng-repeat="item in cardPoolTypeList" value="{{item.data}}">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-box">
+                    <label class="form-label">状态：</label>
+                    <select class="form-control w200" ng-model="queryParams.available"
+                            ng-change="queryCards()">
+                        <option value="">请选择</option>
+                        <option value="true">可用</option>
+                        <option value="false">不可用</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 180px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="200">
+                            <strong>密码</strong>
+                        </th>
+                        <th>
+                            <strong>类型</strong>
+                        </th>
+                        <th>
+                            <strong>状态</strong>
+                        </th>
+                        <th width="200">
+                            <strong>创建时间</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            <td-limit-span jy-text="item.password"></td-limit-span>
+                        </td>
+                        <td>
+                            {{item.type | CardPoolTypeFilter}}
+                        </td>
+                        <td>
+                            {{item.available ? "可用" : "不可用" }}
+                        </td>
+                        <td>
+                            {{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 180px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th width="150">
+                            <strong>卡号</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.no"></td-limit-span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </table-box>
+</div>

@@ -1,0 +1,21 @@
+<div class="modal">
+    <div class="modal-dialog" style="width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    <span class="glyphicons glyphicons-group"></span>
+                    {{title}}
+                </h4>
+            </div>
+            <div class="modal-body center">
+                <img ng-src="{{codePath}}"/>
+            </div>
+            <div class="modal-footer center">
+                <button type="button" class="btn btn-primary" ng-click="download()">下载</button>
+            </div>
+        </div>
+    </div>
+</div>

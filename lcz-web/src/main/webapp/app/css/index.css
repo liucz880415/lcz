@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+.index-head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    height: 60px;
+}
+
+.index-head-title {
+    color: #5B9BD1;
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 30px;
+    font-size: 26px;
+}
+
+.index-head-exit {
+    height: 60px;
+    float: right;
+    margin-right: 20px;
+    color: #5B9BD1;
+    display: inline-block;
+    line-height: 60px;
+    margin-left: 30px;
+    font-size: 26px;
+}
+
+.index-head-exit .icon-signout {
+    font-size: 22px;
+    margin-top: 16px;
+    color: #c0cddc;
+}
+
+.index-head .user-name {
+    height: 60px;
+    line-height: 60px;
+    float: right;
+    margin-right: 30px;
+    color: #7FB0DA;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.index-nav {
+    position: fixed;
+    left: 10px;
+    top: 70px;
+    bottom: 10px;
+    background-color: #fff;
+    width: 200px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.index-nav .nav-title {
+    padding: 9px 8px 4px 8px;
+    width: 100%;
+    display: block;
+    font-size: 15px;
+    border-bottom: 1px solid #fff;
+    color: #5b9bd1;
+}
+
+.index-nav .nav-group {
+    padding: 9px 15px;
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+    border-left: 2px solid #fff;
+    transition: color 0.5s, background-color 0.5s;
+}
+
+.index-nav .nav-group.expand {
+    background: #f2f6f9;
+    color: #5b9bd1;
+    border-left: 2px solid #5b9bd1;
+}
+
+.index-nav .nav-group:hover {
+    background: #f2f6f9;
+    color: #5b9bd1;
+}
+
+.index-nav .nav-item {
+    padding: 9px 22px;
+    width: 100%;
+    display: block;
+    font-size: 13px;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+    transition: color 0.5s, background-color 0.5s;
+}
+
+.index-nav .nav-item:hover {
+    background: #f2f6f9;
+    color: #5b9bd1;
+}
+
+.index-nav .nav-item.selected {
+    background: #f2f6f9;
+    color: #5b9bd1;
+}
+
+.index-body {
+    position: fixed;
+    left: 220px;
+    top: 70px;
+    right: 10px;
+    bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    overflow: overlay;
+}

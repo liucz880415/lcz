@@ -1,0 +1,44 @@
+<div class="modal" ng-controller="LoginModalController">
+    <div class="modal-dialog modal-center" style="width: 300px;" offset-top="-120">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span class="icon-user"></span>
+                    登录
+                </h4>
+            </div>
+            <div class="modal-body" style="padding-top: 0;">
+                <form name="LoginForm">
+                    <div class="prevent-auto-fill" tabindex="-1">
+                        <input type="text" name="temp1" tabindex="-1">
+                        <input type="text" name="temp2" tabindex="-1">
+                        <input type="password" name="temp3" tabindex="-1">
+                        <input type="password" name="temp4" tabindex="-1">
+                    </div>
+
+                    <span class="red">
+                        {{errorMessage}}&nbsp;
+                    </span>
+                    <div>
+                        <div class="form-group" style="margin-top:10px; ">
+                            <input class="form-control" type="text" placeholder="请输入用户名" name="username"
+                                   ng-required="true" ng-keyup="inputKeyUp($event)"
+                                   ng-maxlength="100" ng-model="username">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请输入密码" name="password"
+                                   ng-required="true" ng-keyup="inputKeyUp($event)"
+                                   ng-maxlength="100" ng-model="password">
+                        </div>
+                        <div>
+                            <button id="loginButton" type="button" class="btn btn-primary"
+                                    style="width: 100%;font-size: 20px;" ng-click="login($event,null)">
+                                登录
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

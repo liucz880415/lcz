@@ -1,0 +1,36 @@
+<div class="modal" ng-controller="OpenModalController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    <span class="icon-cog"></span>
+                    模态框
+                </h4>
+            </div>
+            <div class="modal-body one-line-form">
+                <div class="one-line-box">
+                    <label>手机号：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.mobile">
+                </div>
+                <div class="one-line-box">
+                    <label>手机号：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.mobile">
+                </div>
+                <div class="one-line-box">
+                    <label>手机号：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.mobile">
+                </div>
+                <div class="one-line-box">
+                    <label>手机号：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.mobile">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="alert()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

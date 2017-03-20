@@ -1,0 +1,105 @@
+<div ng-controller="EntController">
+    <table-box jy-page-data="pageData" jy-query-params="param" jyf-query="queryProcureCards()"
+               jy-execute-query="executeQuery">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">采购人：</label>
+                    <input type="text" class="form-control w200" ng-model="param.userName" placeholder="请输入采购人">
+                </div>
+                <div class="form-box">
+                    <label class="form-label">采购起始日期：</label>
+                    <ymd-picker jy-id="param.startTime" jya-placeholder="请输入起始日期"></ymd-picker>
+                </div>
+                <div class="form-box">
+                    <label class="form-label">采购终止日期：</label>
+                    <ymd-picker jy-id="param.endTime" jya-placeholder="请输入终止日期"></ymd-picker>
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 180px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="150">
+                            <strong>产品</strong>
+                        </th>
+                        <th width="150">
+                            <strong>企业</strong>
+                        </th>
+                        <th width="150">
+                            <strong>卡类型</strong>
+                        </th>
+                        <th width="150">
+                            <strong>采购数量</strong>
+                        </th>
+                        <th width="150">
+                            <strong>采购时间</strong>
+                        </th>
+                        <th width="150">
+                            <strong>操作</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{item['productName'] }}
+                        </td>
+                        <td>
+                            {{item['channelName'] }}
+                        </td>
+                        <td>
+                            {{item['skuName']}}
+                        </td>
+                        <td>
+                            {{item.procureCount}}
+                        </td>
+                        <td>
+                            {{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="exportProcureCards(item.procureId)">
+                                <span class="icon-download"></span>导出卡记录
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 180px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th width="150">
+                            <strong>采购人</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <th>
+                            {{item.userName}}
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="button-box">
+            <button class="btn btn-primary" ng-click="batchProcureCards($event)">
+                <span class="icon-plus"></span>批量采购
+            </button>
+        </div>
+    </table-box>
+</div>

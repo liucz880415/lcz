@@ -1,0 +1,10 @@
+<span class="glyphicons" title="排序" ng-mouseover="over = true;" ng-mouseleave="over = false;"
+      style="position: absolute;top: 10px;right: 5px;cursor: pointer;"
+      ng-class="{
+          'icon-sort':!((jyQueryParams.sortId && jyQueryParams.sortId == jyaId && jyQueryParams.sortAsc === true) || (jyQueryParams.sortId && jyQueryParams.sortId == jyaId && jyQueryParams.sortAsc === false)),
+          'icon-sort-down':(jyQueryParams.sortId && jyQueryParams.sortId == jyaId && jyQueryParams.sortAsc === false),
+          'icon-sort-up':(jyQueryParams.sortId && jyQueryParams.sortId == jyaId && jyQueryParams.sortAsc === true)
+          }"
+      ng-click="sort()"
+      ng-style="{color:(over || (jyQueryParams.sortId && jyQueryParams.sortId == jyaId)) ? '#7FB0DA':'#dddddd'}">
+</span>

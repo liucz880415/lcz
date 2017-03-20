@@ -1,0 +1,89 @@
+<div class="modal">
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    <span class="icon-credit-card"></span>
+                    {{title}}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form name="productForm">
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">名称：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="product.name" name="name"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">编码：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="product.code" name="code"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">类型：</label>
+
+                        <div class="col-9">
+                            <select class="form-control w200" ng-model="product.type" name="type">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in productCategoryList" value="{{item.data}}">
+                                    {{item.label}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">状态：</label>
+
+                        <div class="col-9">
+                            <select class="form-control w200" ng-model="product.status" name="status">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in productStatusList" value="{{item.data}}">
+                                    {{item.label}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">限制：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="product.limitation" name="limitation"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">描述：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="product.description" name="description"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-12">
+                        <label class="col-0 form-label" style="width: 8.1%;">详情：</label>
+
+                        <div class="col-0" style="width: 89.4%;">
+                              <textarea class="form-control w100-100" rows="5" ng-model="product.detail"
+                                        name="detail"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="close()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save($event)">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div ng-controller="GenController">
+    <div class="form-box">
+        <label class="form-label">卡数：</label>
+        <input type="number" class="form-control w200" ng-model="num" placeholder="请输入卡数">
+    </div>
+    <div class="form-box">
+        <label class="form-label">类型：</label>
+        <select class="form-control w200" ng-model="type">
+            <option value="NORMAL">普通卡</option>
+            <option value="TRAIL">体验卡</option>
+        </select>
+    </div>
+    <div class="form-box">
+        <button class="btn btn-default" style="top: -3px;position: relative;" ng-click="initCard()">
+            <span class="icon-plus"></span>批量生成卡
+        </button>
+        <button class="btn btn-default" style="top: -3px;position: relative;" ng-click="initCardExp()">
+            <span class="icon-plus"></span>批量赠与体验卡
+        </button>
+    </div>
+
+</div>

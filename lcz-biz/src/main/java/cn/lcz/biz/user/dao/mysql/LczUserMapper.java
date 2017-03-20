@@ -16,4 +16,6 @@ public interface LczUserMapper {
     int updateByPrimaryKeyWithBLOBs(LczUser record);
 
     int updateByPrimaryKey(LczUser record);
+
+    LczUser queryByUserName(String username);
 }

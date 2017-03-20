@@ -1,0 +1,111 @@
+<div ng-controller="CardSearchController">
+    <table-box jy-query-params="param" jy-page-data="pageData"
+               jyf-query="queryList()" jya-auto-query="true" jy-execute-query="executeQuery">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">卡号：</label>
+                    <input type="text" class="form-control w200" ng-model="param.cardNo" placeholder="请输入卡号">
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 180px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="100">
+                            <strong>卡类型</strong>
+                        </th>
+                        <th width="150">
+                            <strong>卡面值</strong>
+                        </th>
+                        <th width="100">
+                            <strong>卡状态</strong>
+                        </th>
+                        <th width="90">
+                            <strong>购买人</strong>
+                        </th>
+                        <th width="100">
+                            <strong>购买手机号</strong>
+                        </th>
+                        <th width="100">
+                            <strong>购买日期</strong>
+                        </th>
+                        <th width="80">
+                            <strong>剩余次数</strong>
+                        </th>
+                        <th width="100">
+                            <strong>原始次数</strong>
+                        </th>
+                        <!--<th width="150">
+                            <strong>操作</strong>
+                        </th>-->
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{item.cardPoolType | CardPoolTypeFilter}}
+                        </td>
+                        <td>
+                            {{typeList[typeNameList.indexOf(item.cardType)]['skuName']}}
+                        </td>
+                        <td>
+                            {{item.cardStatus | CardStatusFilter}}
+                        </td>
+                        <td>
+                            {{item.userName}}
+                        </td>
+                        <td>
+                            {{item.mobile}}
+                        </td>
+                        <td>
+                            {{item.tradeTime | date:'yyyy-MM-dd'}}
+                        </td>
+                        <td>
+                            {{item.currentCount}}
+                        </td>
+                        <td>
+                            {{item.originalCount}}
+                        </td>
+                        <!--<td>
+                            <button class="btn btn-primary" ng-disabled="item.cancelCardStatus=='CANCELED'"
+                                    ng-click="changeStatus(item)">
+                                <span class="icon-ban-circle">{{item.cancelCardStatus | CancelCardStatusFilter}}</span>
+                            </button>
+                        </td>-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 180px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th width="150">
+                            <strong>卡号</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.cardNo"></td-limit-span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </table-box>
+</div>

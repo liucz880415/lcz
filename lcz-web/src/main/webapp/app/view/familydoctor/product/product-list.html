@@ -1,0 +1,242 @@
+<div ng-controller="ProductListController">
+    <table-box jya-height-percent="0.5" jy-offset-height="-5" jy-page-data="pageData" jy-query-params="queryParams"
+               jyf-query="query()" style="margin-bottom: 5px;">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">产品名称：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.name">
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 130px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th>
+                            <strong>编码</strong>
+                        </th>
+                        <th width="200">
+                            <strong>描述</strong>
+                        </th>
+                        <th>
+                            <strong>类型</strong>
+                        </th>
+                        <th>
+                            <strong>状态</strong>
+                        </th>
+                        <th>
+                            <strong>限制</strong>
+                        </th>
+                        <th width="200">
+                            <strong>详情</strong>
+                        </th>
+                        <th width="400">
+                            <strong>操作</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            <td-limit-span jy-text="item.code"></td-limit-span>
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.description"></td-limit-span>
+                        </td>
+                        <td>
+                            {{item.type | ProductCategoryFilter}}
+                        </td>
+                        <td>
+                            {{item.status | ProductStatusFilter}}
+                        </td>
+                        <td>
+                            {{item.limitation}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.detail"></td-limit-span>
+                        </td>
+                        <td>
+                            <button class="btn btn-default" ng-click="productDetail(item.id,$event)">
+                                <span class="icon-list"></span>子产品列表
+                            </button>
+                            <button class="btn btn-primary" ng-click="editProduct(item,$event)">
+                                <span class="icon-edit"></span>编辑
+                            </button>
+                            <button class="btn btn-primary" ng-click="updateProductStatus(item,'OFF_SALE',$event)"
+                                    ng-disabled="item.status=='OFF_SALE'">
+                                <span class="icon-arrow-down"></span>下架
+                            </button>
+                            <button class="btn btn-primary" ng-click="updateProductStatus(item,'ON_SALE',$event)"
+                                    ng-disabled="item.status=='ON_SALE'">
+                                <span class="icon-arrow-up"></span>上架
+                            </button>
+                            <button class="btn btn-primary" ng-click="addSku(item.id,$event)">
+                                <span class="icon-plus"></span>新增子产品
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="width: 130px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th width="100">
+                            <strong>名称</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.name"></td-limit-span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="button-box">
+            <button class="btn btn-primary" ng-click="addProduct($event)">
+                <span class="icon-plus"></span>新增产品
+            </button>
+        </div>
+    </table-box>
+    <table-box jya-height-percent="0.5" jy-offset-height="-5" jy-page-data="skuPageData"
+               jy-query-params="querySkuParams" jyf-query="querySku()" jya-params-key="sub" jya-auto-query="false" jy-execute-query="skuExecuteQuery">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">子产品名称：</label>
+                    <input type="text" class="form-control w200" ng-model="querySkuParams.name">
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 130px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="150">
+                            <strong>编码</strong>
+                        </th>
+                        <th>
+                            <strong>类型</strong>
+                        </th>
+                        <th>
+                            <strong>现价</strong>
+                        </th>
+                        <th>
+                            <strong>原价</strong>
+                        </th>
+                        <th>
+                            <strong>是否默认</strong>
+                        </th>
+                        <th>
+                            <strong>显示序号</strong>
+                        </th>
+                        <th>
+                            <strong>状态</strong>
+                        </th>
+                        <th>
+                            <strong>库存</strong>
+                        </th>
+                        <th>
+                            <strong>可用次数</strong>
+                        </th>
+
+                        <th width="300">
+                            <strong>操作</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in skuPageData.content track by $index">
+                        <td>
+                            <td-limit-span jy-text="item.code"></td-limit-span>
+                        </td>
+                        <td>
+                            {{item.cardType}}
+                        </td>
+                        <td>
+                            {{item.price}}
+                        </td>
+                        <td>
+                            {{item.priceOrg}}
+                        </td>
+                        <td>
+                            {{item.isDefault}}
+                        </td>
+                        <td>
+                            {{item.sequence}}
+                        </td>
+                        <td>
+                            {{item.status | ProductSkuStatusFilter}}
+                        </td>
+                        <td>
+                            {{item.skuStore}}
+                        </td>
+                        <td>
+                            {{item.originalCount}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="editSku(item,$event)">
+                                <span class="icon-edit"></span>编辑
+                            </button>
+                            <button class="btn btn-primary" ng-disabled="item.status=='STOP_SALE'"
+                                    ng-click="updateSkuStatus(item,'STOP_SALE',$event)">
+                                <span class="icon-stop"></span>停售
+                            </button>
+                            <button class="btn btn-primary" ng-disabled="item.status=='SALE_OUT'"
+                                    ng-click="updateSkuStatus(item,'SALE_OUT',$event)">
+                                <span class="icon-ban-circle"></span>售罄
+                            </button>
+                            <button class="btn btn-primary" ng-disabled="item.status=='NORMAL'"
+                                    ng-click="updateSkuStatus(item,'NORMAL',$event)">
+                                <span class="icon-repeat"></span>恢复
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="width: 130px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th width="100">
+                            <strong>名称</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in skuPageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.name"></td-limit-span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </table-box>
+</div>

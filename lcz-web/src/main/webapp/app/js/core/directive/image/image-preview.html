@@ -1,0 +1,29 @@
+<div style="display: inline-block;">
+    <img ng-show="jyaSrc && !imgError" ng-src="{{jyaSrc}}" ng-style="{width:jyWidth,height:jyHeight}" ng-click="open()"
+         style="cursor: -webkit-zoom-in;">
+
+    <div ng-show="!jyaSrc || imgError" ng-style="{width:jyWidth,height:jyHeight,'line-height':jyHeight+'px'}"
+         style="display: block;text-align: center;border: 1px solid #b9b9b9;color:#b9b9b9;">
+        <span class="icon-ban-circle" style="font-size: 30px;position: relative;top: 6px;"></span>
+        {{imgError ? "图片出错":"暂无图片"}}
+    </div>
+
+    <div class="image-preview-overlay visible" style="display: none">
+        <div class="image-preview-slider"
+             style="transition: opacity 0.4s ease; opacity: 1; transform: translate3d(0%, 0px, 0px);">
+            <div class="full-image" ng-click="imageClick($event)">
+                <figure>
+                    <img ng-src="{{jyaSrc}}">
+                </figure>
+            </div>
+        </div>
+        <button class="close-button image-preview-button" ng-click="close()">
+            <svg width="30" height="30">
+                <g stroke="rgb(160, 160, 160)" stroke-width="4">
+                    <line x1="5" y1="5" x2="25" y2="25"></line>
+                    <line x1="5" y1="25" x2="25" y2="5"></line>
+                </g>
+            </svg>
+        </button>
+    </div>
+</div>

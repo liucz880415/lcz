@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="../../img/favicon.ico" mce_href="../../img/favicon.ico" type="image/x-icon">
+    <title>健医科技</title>
+    <!-- build:css ../../css/common.min.css -->
+    <link rel="stylesheet" type="text/css" href="../../css/module/common.css"/>
+    <!-- /build -->
+    <!-- build:css ../../css/familydoctor.min.css -->
+    <link rel="stylesheet" type="text/css" href="../../css/module/familydoctor.css"/>
+    <!-- /build -->
+</head>
+
+<body ng-controller="IndexController" class="ng-cloak">
+<index-head></index-head>
+<index-nav></index-nav>
+
+<div class="index-body">
+    <div ng-view class="view-slide-in"></div>
+</div>
+
+<script src="../../js/core/main-init.js"></script>
+<!-- build:js ../../js/familydoctor.min.js -->
+<script data-main="../../js/app/familydoctor/main.js" src="../../js/plugins/requirejs/require.js"></script>
+<!-- /build -->
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<div class="modal">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    <span class="glyphicons glyphicons-group"></span>
+                    {{title}}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-box left col-6">
+                    <label class="col-3 form-label">原关键词：</label>
+
+                    <div class="col-9">
+                        <input type="text" class="form-control w200" ng-model="keyword.originalKey"
+                               placeholder="请输入原关键词">
+                    </div>
+                </div>
+
+                <div class="form-box left col-6">
+                    <label class="col-3 form-label">替换关键词：</label>
+
+                    <div class="col-9">
+                        <input type="text" class="form-control w200" ng-model="keyword.replaceKey" placeholder="请输入替换关键词">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="close()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save($event)">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

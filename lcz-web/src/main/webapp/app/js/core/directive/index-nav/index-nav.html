@@ -1,0 +1,24 @@
+<div class="index-nav">
+    <ul ng-repeat="item in nav">
+        <li>
+            <span class="nav-title" ng-bind-html="item.name | Html"></span>
+        </li>
+        <li ng-repeat="item2 in item.nav">
+            <span class="nav-group" ng-class="{expand:item2.expand}" ng-click="item2.expand = !item2.expand">
+                <span ng-bind-html="item2.name | Html"></span>
+                <span class="glyphicons right"
+                      ng-class="{'icon-caret-down':item2.expand,'icon-caret-left':!item2.expand}"></span>
+            </span>
+            <ul class="slide-up-down" ng-show="item2.expand" style="{{::!item2.expand ? 'display: none;' : ''}}">
+                <li ng-repeat="item3 in item2.nav">
+                    <a class="nav-item" href="" ng-click="open(item3)"
+                       ng-class="{selected:item3.selected}">
+                        <span ng-bind-html="item3.name | Html"></span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+

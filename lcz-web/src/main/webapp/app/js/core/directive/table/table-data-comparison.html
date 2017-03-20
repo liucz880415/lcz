@@ -1,0 +1,22 @@
+<div class="table-data-comparison">
+    <table>
+        <tr>
+            <td>
+                <input type="checkbox" class="form-control head-checkbox" ng-model="onlyDiff">
+                <span style="cursor: pointer;" ng-click="onlyDiff = !onlyDiff">只看不同</span>
+            </td>
+            <td ng-repeat="data in dataComparisonList track by $index">
+                <button class="btn btn-danger" ng-click="deleteDataComparison(data)">删除</button>
+            </td>
+        </tr>
+        <tr ng-repeat="item in jyDataComparison  track by $index" ng-hide="onlyDiff && !item.diff"
+            ng-class="{'background-color-yellow':item.diff}">
+            <td>
+                {{item.label}}
+            </td>
+            <td ng-repeat="data in dataComparisonList track by $index">
+                {{data[item.data]}}
+            </td>
+        </tr>
+    </table>
+</div>

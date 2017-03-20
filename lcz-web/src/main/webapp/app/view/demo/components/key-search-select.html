@@ -1,0 +1,11 @@
+<div ng-controller="KeySearchSelectController">
+    <key-search-select jy-selected-item="selectedItem" jya-keys="mobile" jya-url="orderManage/test.do"
+                       jyf-call-back="callBack()" jya-placeholder="输入手机号查询" jya-width="200"
+                       jya-selected-label="${mobile}" jya-line-height="54">
+        <div>
+            <div>手机号：${mobile}</div>
+            <div>ID:${id}</div>
+        </div>
+    </key-search-select>
+    {{selectedItem["id"]}}
+</div>

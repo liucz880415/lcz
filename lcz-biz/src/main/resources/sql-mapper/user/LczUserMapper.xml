@@ -1,95 +1,117 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.lcz.biz.user.dao.mysql.LczUserMapper" >
-  <resultMap id="BaseResultMap" type="cn.lcz.meta.dto.user.mysql.LczUser" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="Name" property="name" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="cn.lcz.meta.dto.user.mysql.LczUser" extends="BaseResultMap" >
-    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    ID, Name, age
-  </sql>
-  <sql id="Blob_Column_List" >
-    remark
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from lcz_user
-    where ID = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+<mapper namespace="cn.lcz.biz.user.dao.mysql.LczUserMapper">
+    <resultMap id="BaseResultMap" type="cn.lcz.meta.dto.user.mysql.LczUser">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="Name" property="name" jdbcType="VARCHAR"/>
+        <result column="pass_word" property="passWord" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="cn.lcz.meta.dto.user.mysql.LczUser" extends="BaseResultMap">
+        <result column="remark" property="remark" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      ID, Name, age, pass_word
+    </sql>
+    <sql id="Blob_Column_List">
+      remark
+    </sql>
+    <select id="queryByUserName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from lcz_user
+        where Name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from lcz_user
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from lcz_user
     where ID = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="cn.lcz.meta.dto.user.mysql.LczUser" >
-    insert into lcz_user (ID, Name, age, 
+    </delete>
+    <insert id="insert" parameterType="cn.lcz.meta.dto.user.mysql.LczUser">
+    insert into lcz_user (ID, Name, age, pass_word,
       remark)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{remark,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.lcz.meta.dto.user.mysql.LczUser" >
-    insert into lcz_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="name != null" >
-        Name,
-      </if>
-      <if test="age != null" >
-        age,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.lcz.meta.dto.user.mysql.LczUser" >
-    update lcz_user
-    <set >
-      <if test="name != null" >
-        Name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.lcz.meta.dto.user.mysql.LczUser" >
+      #{passWord,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.lcz.meta.dto.user.mysql.LczUser">
+        insert into lcz_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                Name,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="passWord != null">
+                pass_word,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="passWord != null">
+                #{passWord,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.lcz.meta.dto.user.mysql.LczUser">
+        update lcz_user
+        <set>
+            <if test="name != null">
+                Name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="passWord != null">
+                pass_word = #{passWord,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.lcz.meta.dto.user.mysql.LczUser">
     update lcz_user
     set Name = #{name,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
+      pass_word = #{passWord,jdbcType=LONGVARCHAR},
       remark = #{remark,jdbcType=LONGVARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.lcz.meta.dto.user.mysql.LczUser" >
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.lcz.meta.dto.user.mysql.LczUser">
     update lcz_user
     set Name = #{name,jdbcType=VARCHAR},
+      pass_word = #{passWord,jdbcType=LONGVARCHAR},
       age = #{age,jdbcType=INTEGER}
     where ID = #{id,jdbcType=VARCHAR}
-  </update>
+    </update>
 </mapper>

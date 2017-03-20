@@ -1,0 +1,118 @@
+<div ng-controller="ChannelListController">
+    <table-box jya-height-percent="1" jy-offset-height="-5" jy-page-data="pageData" jy-query-params="queryParams"
+               jyf-query="query()">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">渠道名称：</label>
+                    <input type="text" class="form-control w200" ng-model="queryParams.name">
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 180px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th>
+                            <strong>编码</strong>
+                        </th>
+                        <th width="200">
+                            <strong>描述</strong>
+                        </th>
+                        <th>
+                            <strong>类型</strong>
+                        </th>
+                        <th>
+                            <strong>状态</strong>
+                        </th>
+                        <th width="200">
+                            <strong>地址</strong>
+                        </th>
+                        <th width="110">
+                            <strong>电话</strong>
+                        </th>
+                        <td width="100">
+                            <strong>二维码</strong>
+                        </td>
+                        <th width="300">
+                            <strong>操作</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            <td-limit-span jy-text="item.code"></td-limit-span>
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.description"></td-limit-span>
+                        </td>
+                        <td>
+                            {{item.category | ChannelCategoryFilter}}
+                        </td>
+                        <td>
+                            {{item.status | ChannelStatusFilter}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.address"></td-limit-span>
+                        </td>
+                        <td>
+                            {{item.tel }}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="code(item,$event)">
+                                <span class="icon-qrcode"></span>二维码
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="editChannel(item,$event)">
+                                <span class="icon-edit"></span>编辑
+                            </button>
+                            <button class="btn btn-primary" ng-disabled="item.status=='INACTIVE'"
+                                    ng-click="updateChannelStatus(item,'INACTIVE',$event)">
+                                <span class="icon-ban-circle"></span>停用
+                            </button>
+                            <button class="btn btn-primary" ng-disabled="item.status=='ACTIVE'"
+                                    ng-click="updateChannelStatus(item,'ACTIVE',$event)">
+                                <span class="icon-repeat"></span>恢复
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="width: 180px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                        <th width="150">
+                            <strong>名称</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <td-limit-span jy-text="item.name"></td-limit-span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="button-box">
+            <button class="btn btn-primary" ng-click="addChannel($event)">
+                <span class="glyphicons glyphicons-plus"></span>新增渠道
+            </button>
+        </div>
+    </table-box>
+</div>

@@ -1,0 +1,65 @@
+<div ng-controller="SettingsController">
+    <h1>设置</h1>
+    <br/>
+    <br/>
+    <table>
+        <tr>
+            <td width="250" align="center"><label><input name="commission" type="radio" value="SCALE"
+                                                         ng-model="commission" ng-checked="true"/>销售返佣比例(%)</label>
+            </td>
+            <td><label><input name="commission" type="radio" value="QUOTA" ng-model="commission"/>销售返佣固定值(元)</label>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table>
+        <tr style="height: 100px">
+            <td width="200" align="center" ng-repeat="item in cards track by $index">
+                {{typeList[typeNameList.indexOf(item.cardType)]['skuName']}}
+                <input type="number" class="form-control" style="width: 60px" ng-model="cards[$index].reward"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7" style=" text-align:center" ng-show="visible">
+                <input type="button" class="btn btn-default" ng-click="updateAward()" value="确定"/>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <hr/>
+    <br/>
+    <br/>
+
+    <h1>导出</h1>
+    <table>
+        <tr>
+            <td>起始时间：</td>
+            <!--<td width="200"><input type="text" class="form-control w180" ng-model="beginTime"/></td>-->
+            <td width="200">
+                <ymd-picker jy-id="beginTime" jya-is-date="false"></ymd-picker>
+            </td>
+            <td>终止时间：</td>
+            <!--<td><input type="text" class="form-control w180" ng-model="endTime"/></td>-->
+            <td>
+                <ymd-picker jy-id="endTime" jya-is-date="false"></ymd-picker>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <td width="100"><label><input name="data" type="radio" value="card" ng-model="data" ng-checked="true"/>卡数据
+            </label></td>
+            <td width="100"><label><input name="data" type="radio" value="account" ng-model="data"/>用户数据 </label></td>
+            <td width="100"><label><input name="data" type="radio" value="sale" ng-model="data"/>销售数据 </label></td>
+        </tr>
+        <tr>
+            <td colspan="3" style=" text-align:center" height="100dp"><input type="button" class="btn btn-default"
+                                                                             ng-click="export()" value="导出数据"/></td>
+        </tr>
+    </table>
+
+
+</div>

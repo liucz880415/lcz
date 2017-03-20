@@ -1,0 +1,113 @@
+<div class="modal">
+    <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    <span class="icon-credit-card"></span>
+                    {{title}}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form name="skuForm">
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">名称：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.name" name="name"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">编码：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.code" name="code"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">类型：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.cardType" name="cardType"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">状态：</label>
+
+                        <div class="col-9">
+                            <select class="form-control w200" ng-model="productSku.status" name="status">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in productSkuStatusList" value="{{item.data}}">
+                                    {{item.label}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">现价：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.price" name="price"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">原价：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.priceOrg" name="priceOrg"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">序号：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.sequence" name="sequence"/>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">是否默认：</label>
+
+                        <div class="col-9">
+                            <label class="radio-box">
+                                <input type="radio" class="radio" ng-value="true" ng-model="productSku.isDefault"/>
+                                是
+                            </label>
+                            <label class="radio-box">
+                                <input type="radio" class="radio" ng-value="false" ng-model="productSku.isDefault"/>
+                                否
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">库存：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.skuStore" name="skuStore"/>
+                        </div>
+                    </div>
+                    <div class="form-box left col-4">
+                        <label class="col-3 form-label">可用次数：</label>
+
+                        <div class="col-9">
+                            <input class="form-control w200" ng-model="productSku.originalCount" name="originalCount"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="close()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save($event)">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

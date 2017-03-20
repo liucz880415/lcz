@@ -1,0 +1,140 @@
+<div class='datetime-picker position-relative'>
+    <input type='text' class='form-control' style='text-align: left;z-index: 0;' name='{{jyaName}}'
+           ng-focus="inputFocus()" ng-keyup="inputKeyup()" ng-required='jyRequired' ui-mask='{{uiMask}}'
+           ng-model='stringValue' ng-disabled="jyDisabled" jyv-blur-flag="false">
+    <span class='icon-calendar input-icon'
+          ng-click="iconClick()" ng-style="{cursor:jyDisabled ? 'no-drop':'pinter'}"></span>
+
+    <div class='fixed-box calendar-box' ng-show="showCalendarBox">
+        <div style="display: inline-flex;">
+            <div style="position: relative;display: inline-block;">
+                <div class="select-box">
+                    <div style="display: inline-block;position: absolute;left: 4px;top:-2px;">
+                        <button class="btn btn-default" type="button" title="上一年" ng-click="lastYear($event)">
+                            &lt;&lt;</button>
+                        <button class="btn btn-default" type="button" title="上个月" ng-click="lastMonth($event)"
+                                style="margin-left: -4px;">
+                            &lt;
+                        </button>
+                    </div>
+                    <div style="text-align: center;">
+                        <select ng-model="viewYear" ng-change="viewDateChange()">
+                            <option ng-repeat="item in yearList" value="{{item.value}}" ng-disabled='item.disabled'
+                                    ng-style='{color:item.disabled ? "#cdcdcd":""}'>
+                                {{::item.value}}
+                            </option>
+                        </select>
+                        &nbsp;
+                        <select ng-model="viewMonth" ng-change="viewDateChange()">
+                            <option ng-repeat="item in monthList" value="{{item.value}}" ng-disabled='item.disabled'
+                                    ng-style='{color:item.disabled ? "#cdcdcd":""}'>
+                                {{::item.value}}
+                            </option>
+                        </select>
+                    </div>
+                    <div style="display: inline-block;position: absolute;right: 4px;top:-2px;">
+                        <button class="btn btn-default" type="button" title="下个月" ng-click="nextMonth($event)"
+                                style="margin-right: -4px;">
+                            &gt;
+                        </button>
+                        <button class="btn btn-default" type="button" title="下一年" ng-click="nextYear($event)">
+                            &gt;&gt;</button>
+                    </div>
+                </div>
+                <table class="calendar-table" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                        <th>日</th>
+                    </tr>
+                    <tr ng-repeat="week in weekList track by $index">
+                        <td ng-repeat="item in week" jya-eventId="{{eventId}}"
+                            ng-class="{'not-current':!item.current,'today':item.today,'select':item.select,'disabled':item.disabled}"
+                            title="{{::item.disabled ? '不可选择':''}}" ng-click="selectDate(item)">
+                            {{::item.day}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="time-select-box" style="padding: 5px 10px;margin: auto;display: inline-flex;">
+                <div>
+                    <div style="text-align: center;padding-bottom: 6px;font-size: 24px;cursor: pointer;"
+                         ng-click="nextHours()">
+                        <span class="icon-angle-up"></span>
+                    </div>
+                    <select ng-model="viewHours" ng-change="viewTimeChange()" style="padding: 5px 0 5px 5px;">
+                        <option ng-repeat="item in hoursList" value="{{item.value}}" ng-disabled='item.disabled'
+                                ng-style='{color:item.disabled ? "#cdcdcd":""}'>
+                            {{::item.value}}
+                        </option>
+                    </select>
+
+                    <div style="text-align: center;padding-top: 6px;font-size: 24px;cursor: pointer;"
+                         ng-click="lastHours()">
+                        <span class="icon-angle-down"></span>
+                    </div>
+                </div>
+                <div style="margin: auto 2px">
+                    ：
+                </div>
+                <div>
+                    <div style="text-align: center;padding-bottom: 6px;font-size: 24px;cursor: pointer;"
+                         ng-click="nextMinutes()">
+                        <span class="icon-angle-up"></span>
+                    </div>
+                    <select ng-model="viewMinutes" ng-change="viewTimeChange()" style="padding: 5px 0 5px 5px;">
+                        <option ng-repeat="item in minutesList" value="{{item.value}}" ng-disabled='item.disabled'
+                                ng-style='{color:item.disabled ? "#cdcdcd":""}'>
+                            {{::item.value}}
+                        </option>
+                    </select>
+
+                    <div style="text-align: center;padding-top: 6px;font-size: 24px;cursor: pointer;"
+                         ng-click="lastMinutes()">
+                        <span class="icon-angle-down"></span>
+                    </div>
+                </div>
+                <div style="margin: auto 2px">
+                    ：
+                </div>
+                <div>
+                    <div style="text-align: center;padding-bottom: 6px;font-size: 24px;cursor: pointer;"
+                         ng-click="nextSeconds()">
+                        <span class="icon-angle-up"></span>
+                    </div>
+                    <select ng-model="viewSeconds" ng-change="viewTimeChange()" style="padding: 5px 0 5px 5px;">
+                        <option ng-repeat="item in secondsList" value="{{item.value}}" ng-disabled='item.disabled'
+                                ng-style='{color:item.disabled ? "#cdcdcd":""}'>
+                            {{::item.value}}
+                        </option>
+                    </select>
+
+                    <div style="text-align: center;padding-top: 6px;font-size: 24px;cursor: pointer;"
+                         ng-click="lastSeconds()">
+                        <span class="icon-angle-down"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-box" style="display: flex;margin-top: 2px;">
+            <button class="btn btn-default" type="button" ng-click="confirm()"
+                    style="border: none;width: 33.3%;">
+                <span class="icon-ok"></span>确定
+            </button>
+            <button class="btn btn-default" type="button" ng-click="today()"
+                    style="border: none;width: 33.3%;">
+                <span class="icon-calendar"></span>今天
+            </button>
+            <button class="btn btn-default" type="button" ng-click="clear()"
+                    style="border: none;width: 33.3%;">
+                <span class="icon-remove"></span>清除
+            </button>
+        </div>
+    </div>
+</div>

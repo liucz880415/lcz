@@ -1,0 +1,43 @@
+<div class="table-page">
+    <ul class="pagination left">
+        <li class="page-first" ng-class="{disabled:jyQueryParams.page === 1 || loading || !jyPageData}">
+            <a ng-click="jumpPage($event,1)"
+               ng-class="{disabled:jyQueryParams.page === 1 || loading || !jyPageData}">«</a>
+        </li>
+        <li class="page-pre" ng-class="{disabled:jyQueryParams.page === 1 || loading || !jyPageData}">
+            <a ng-click="jumpPage($event,jyQueryParams.page - 1)"
+               ng-class="{disabled:jyQueryParams.page === 1 || loading || !jyPageData}">‹</a>
+        </li>
+
+        <li class="page-number" ng-repeat="pageBtn in showPageBtn track by $index"
+            ng-class="{'active':truePage === pageBtn,disabled:loading || !jyPageData}">
+            <a ng-click="jumpPage($event,pageBtn)"
+               ng-class="{disabled:loading || !jyPageData}">
+                {{pageBtn}}
+            </a>
+        </li>
+        <li class="page-next" ng-class="{disabled:jyQueryParams.page === jyPageData['totalPages'] || loading || !jyPageData}">
+            <a ng-click="jumpPage($event,jyQueryParams.page + 1)"
+               ng-class="{disabled:jyQueryParams.page === jyPageData['totalPages'] || loading || !jyPageData}">›</a>
+        </li>
+        <li class="page-last" ng-class="{disabled:jyQueryParams.page === jyPageData['totalPages'] || loading || !jyPageData}">
+            <a ng-click="jumpPage($event,jyPageData['totalPages'])"
+               ng-class="{disabled:jyQueryParams.page === jyPageData['totalPages'] || loading || !jyPageData}">»</a>
+        </li>
+    </ul>
+    <input type="number" class="form-control left page-input"
+           ng-disabled="loading || !jyPageData " ng-model="tempPage" min="1" max="{{jyPageData['totalPages']}}"
+           ng-keydown="tempPageKeyDown($event)">
+
+    <span class="left span-text">&nbsp;/{{jyPageData['totalPages']}}页&nbsp;</span>
+    <button class="btn btn-default left" ng-click="jumpTempPage()" type="button"
+            ng-disabled="loading || !jyPageData ">跳转
+    </button>
+    <span class="left span-text">
+          &nbsp;共&nbsp;{{jyPageData['totalElements']}}&nbsp;条,每页&nbsp;
+    </span>
+    <select class="form-control left select-rows" style="width: 80px;" ng-model="rowsSelect"
+            ng-disabled="loading || !jyPageData ">
+        <option ng-repeat="sRows in rowsSelectList" value="{{sRows}}">{{sRows}}条</option>
+    </select>
+</div>

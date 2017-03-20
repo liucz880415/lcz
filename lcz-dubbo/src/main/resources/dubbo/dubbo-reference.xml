@@ -4,8 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+    <dubbo:annotation package="cn.lcz.dubbo"/>
+
+    <dubbo:reference id="lczUserDubboService" interface="cn.lcz.dubbo.LczUserDubboService" version="1.0"/>
 
     <dubbo:reference id="lczDubboService" interface="cn.lcz.dubbo.LczDubboService" version="1.0"/>
 
-    <dubbo:annotation package="cn.lcz.dubbo"/>
 </beans>

@@ -1,0 +1,103 @@
+<div ng-controller="KeyWordsController">
+    <table-box jy-page-data="pageData" jy-query-params="param" jyf-query="queryKeywords()">
+        <div class="search-panel">
+            <div class="search-panel-box">
+                <div class="form-box">
+                    <label class="form-label">原关键词：</label>
+                    <input type="text" class="form-control w200" ng-model="param.originalKey" placeholder="请输入原关键词">
+                </div>
+                <div class="form-box">
+                    <label class="form-label">替换关键词：</label>
+                    <input type="text" class="form-control w200" ng-model="param.replaceKey" placeholder="请输入替换关键词">
+                </div>
+            </div>
+        </div>
+        <div style="width: calc(100% - 30px);float: right;">
+            <div class="head-box">
+                <table>
+                    <tr>
+                        <th width="150">
+                            <strong>原关键词</strong>
+                        </th>
+                        <th width="150">
+                            <strong>替换关键词</strong>
+                        </th>
+                        <th width="150">
+                            <strong>创建人</strong>
+                        </th>
+                        <th width="150">
+                            <strong>创建时间</strong>
+                        </th>
+                        <th width="150">
+                            <strong>修改人</strong>
+                        </th>
+                        <th width="150">
+                            <strong>修改时间</strong>
+                        </th>
+                        <th width="200">
+                            <strong>操作</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{item.originalKey }}
+                        </td>
+                        <td>
+                            {{item.replaceKey}}
+                        </td>
+                        <td>
+                            {{item['createUserName']}}
+                        </td>
+                        <td>
+                            {{item['createTime'] | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </td>
+                        <td>
+                            {{item['updateUserName']}}
+                        </td>
+                        <td>
+                            {{item['updateTime'] | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="updateKeyword(item,$event)">
+                                <span class="icon-edit"></span>修改
+                            </button>
+                            <button class="btn btn-danger" ng-click="deleteKeyword(item.id,$event)">
+                                <span class="icon-remove"></span>删除
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 30px;float:left;">
+            <div class="left-head-box">
+                <table>
+                    <tr>
+                        <th width="30">
+                            <strong>#</strong>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-body-box">
+                <table>
+                    <tr ng-repeat="item in pageData.content track by $index">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="button-box">
+            <button class="btn btn-primary" ng-click="addNewKeywords($event)">
+                <span class="icon-plus"></span>新增关键词
+            </button>
+        </div>
+    </table-box>
+</div>
