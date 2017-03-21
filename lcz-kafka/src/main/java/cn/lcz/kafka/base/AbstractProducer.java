@@ -66,18 +66,8 @@ public abstract class AbstractProducer {
 
         ProducerRecord<String, KafkaMessage> record = new ProducerRecord<>(topicStr, messageId, message);
 
-//        if (entityManager.isJoinedToTransaction()) {
-//            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
-//                @Override
-//                public void afterCommit() {
-//                    logger.debug("Process message after transaction commit.");
-//                    producer.send(record);
-//                }
-//            });
-//        } else {
         logger.debug("Process message out of transaction.");
         producer.send(record);
-//        }
 
         return record.key();
     }
