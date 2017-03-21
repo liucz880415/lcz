@@ -44,7 +44,8 @@ public class KafkaFactoryImpl implements KafkaFactoryApi {
         logger.debug("Creating kafka consumer with group.id = {}.", groupId);
 
         if (consumerMap.containsKey(groupId)) {
-            throw new RuntimeException("Consumer with group id = " + groupId + " already created.");
+            logger.debug("Consumer with group id = " + groupId + " already created.");
+            return consumerMap.get(groupId);
         }
 
         Consumer<String, KafkaMessage> consumer = new KafkaConsumer<>(properties);
