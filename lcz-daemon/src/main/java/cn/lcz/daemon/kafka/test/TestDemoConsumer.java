@@ -32,7 +32,7 @@ public class TestDemoConsumer extends AbstractNotifyConsumer<TestKafkaEntity> {
                 try {
                     lczDubboService.notifyMessage(entity);
                 } catch (Exception e) {
-                    logger.error("non-active user login consumer: {}.", e.getMessage());
+                    logger.error("test notify consumer: {}.", e.getMessage());
                 }
             }
         };
